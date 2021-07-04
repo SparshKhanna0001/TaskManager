@@ -23,11 +23,6 @@ def get_week_num(date : datetime.date):
 con = sqlite3.connect("tasks.db")
 cur = con.cursor()
 
-try:
-  cur.execute("CREATE TABLE tasks (SerialNum INT NOT NULL UNIQUE, taskname VARCHAR(150) NOT NULL, type VARCHAR(5) NOT NULL, Subject VARCHAR(150) NO T NULL, Priority VARCHAR(100), description VARCHAR (1000), Status VARCHAR(8) NOT NULL, DateOfEntry DA TE, weeknum INT(2), DateCompletion DATE, estimatedT ime INT)")
-except error:
-  continue 
-
 for entry in range(enteries):
   
   for row in cur.execute("SELECT MAX(SerialNum) FROM tasks"):
@@ -37,18 +32,20 @@ for entry in range(enteries):
   SerialNum = int(input("SerialNum: "))
   taskname= input("taskname: ")
   type = input("type long;short :  ")
+  subject = input("Subject: ")
   priorityType = input("priorityType :  ")
+  description = input("Description:  ")
+  status = "pending"
   dateOfEntry = datetime.date.today()
   weekNo = get_week_num(dateOfEntry)
   DateCompletion = None 
-  description = input("Description:  ")
-  status = "pending"
-  subject = input("Subject: ")
+  estimatedTime = int(input("Estimated time(in days): "))
   
-  data_entry = [SerialNum, taskname, type, priorityType.upper(), description, dateOfEntry, weekNo, DateCompletion, status,subject.upper()]
+  
+  data_entry = [SerialNum, taskname, type,subject.upper(), priorityType.upper(), description, status.lower(),dateOfEntry, weekNo, DateCompletion, estimatedTime]
   data_entry = tuple(data_entry)
   
-  sql = "INSERT INTO tasks VALUES (?,?,?,?,?,?,?,?,?,?)"
+  sql = "INSERT INTO tasks VALUES (?,?,?,?,?,?,?,?,?,?,?)"
   
   cur.execute(sql, data_entry)
   
