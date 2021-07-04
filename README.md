@@ -1,7 +1,7 @@
 # TaskManager
 Add, view and manage tasks basically a database 
 
-##Way to use different programs:-
+## Way to use different programs:-
 * ai.py : (add tasks) (number of enteries)
 * si.py : (show tasks)  (all pen done) 
 * up.py : (mark done tasks) (criteria) (value)
