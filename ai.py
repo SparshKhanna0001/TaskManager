@@ -26,10 +26,8 @@ cur = con.cursor()
 for entry in range(enteries):
   
   for row in cur.execute("SELECT MAX(SerialNum) FROM tasks"):
-    print("Last Serial Num : ",row[0])
+    SerialNum = row[0]
   
- 
-  SerialNum = int(input("SerialNum: "))
   taskname= input("taskname: ")
   type = input("type long;short :  ")
   subject = input("Subject: ")
